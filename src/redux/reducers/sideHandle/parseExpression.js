@@ -10,7 +10,7 @@ function round(result, type) {
 
 function calculateGroup(string) {
     console.log("string: ", string)
-    let [before, after] = string.replace(/--/g, "+").match(/(\-*\d+\.*\d*e[\+\-]\d+)|(\-*\d+\.*\d*(?!e))/g).map(numStr => { return Number(numStr) })
+    let [before, after] = string.replace(/[--]/g, "+").replace(/\++/, "+").match(/(\-*\d+\.*\d*e[\+\-]\d+)|(\-*\d+\.*\d*(?!e))/g).map(numStr => { return Number(numStr) })
     console.log(before, after)
     const amountOfDec = 13;
     const checkOperation = str => {
