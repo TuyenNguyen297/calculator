@@ -3,14 +3,14 @@ function round(result, type) {
         const amountOfDec = Math.pow(10, roundFactor)
         result = Math.round(result * amountOfDec) / amountOfDec
         result = (`${result}`.length > 14 && (result > 1 || result < 0)) ? String(Number.parseFloat(result).toExponential(9)) : String(result)
-        console.log("result: ", result)
+        console.log("round: ", result)
         return type === "ADD_SUB" ? result.concat("+") : result
     }
 }
 
 function calculateGroup(string) {
     console.log("string: ", string)
-    let [before, after] = string.replace(/[--]/g, "+").replace(/\++/g, "+").match(/(\-*\d+\.*\d*e[\+\-]\d+)|(\-*\d+\.*\d*(?!e))/g).map(numStr => { return Number(numStr) })
+    let [before, after] = string.replace(/--/g, "+").replace(/\++/g, "+").match(/(\-*\d+\.*\d*e[\+\-]\d+)|(\-*\d+\.*\d*(?!e))/g).map(numStr => { return Number(numStr) })
     console.log(before, after)
     const amountOfDec = 13;
     const checkOperation = str => {
@@ -27,7 +27,7 @@ function calculateGroup(string) {
 }
 
 export default function parseExpression(raw) {
-    let result = raw.replace(/[\+\-\x\/]$/, "").replace(/[--]/g, "+")
+    let result = raw.replace(/[\+\-\x\/]$/, "").replace(/--/g, "+").replace(/\++/g, "+")
 
     const regexMulDiv = /(\d+\.*\d*e[\+\-]\d+[x\/]\-*\d+\.*\d*e[\+\-]\d+)|(\d+\.*\d*e[\+\-]\d+[x\/]\-*\d+\.*\d*)|(\-*\d+\.*\d*(?!e)[x\/]\-*\d+\.*\d*(?!e))/g; //e[x/]e,e[x/]none-e,none-e[x/]none-e
     const regexAddSub = /(\-*\d+\.*\d*e[\+\-]\d+[\+\-]\-*\d+\.*\d*e[\+\-]\d+)|(\-*\d+\.*\d*(?!e)[\+\-]\-*\d+\.*\d*e[\+\-]\d+)|(\-*\d+\.*\d*e[\+\-]\d+[\+\-]\-*\d+\.*\d*(?!e))|(\-*\d+\.*\d*(?!e)[\+\-]\-*\d+\.*\d*(?!e))/g //e+-e, none-e[+-]e, e[+-]non-e,none-e[+-]none-e
