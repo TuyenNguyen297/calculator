@@ -1,0 +1,31 @@
+$global-gap: 3px;
+$global-radius: 20px;
+$align-center: 6px;
+
+@function width($screen) {
+    @if $screen ==PC {
+        @return 500px;
+    }
+
+    @else if $screen ==TL {
+        @return 400px;
+    }
+
+    @else if $screen ==SP {
+        @return 300px;
+    }
+}
+
+@function height($screen) {
+    @if $screen ==PC {
+        @return 800px;
+    }
+
+    @else if $screen ==TL {
+        @return 650px;
+    }
+
+    @else if $screen ==SP {
+        @return 500px;
+    }
+}

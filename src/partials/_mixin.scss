@@ -1,0 +1,18 @@
+@import "./variables";
+
+@mixin expandParent {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin screen($screen) {
+    width: width($screen);
+    min-height: height($screen);
+    @content;
+}
+
+@mixin responsiveMetalBorder($screen) {
+    width: width($screen) + $align-center;
+    height: height($screen) + $align-center;
+    @content;
+}

@@ -1,0 +1,57 @@
+@use "sass:math";
+@import "./partials/variables.scss";
+@import "./partials/mixin.scss";
+
+.App {
+  @include screen(PC) {
+    padding: $global-gap;
+    display: flex;
+    flex-direction: column;
+    gap: $global-gap;
+    border-radius: $global-radius;
+    background: linear-gradient(
+      60deg,
+      rgb(29, 29, 29) 0%,
+      rgb(26, 25, 25) 50%,
+      rgb(12, 12, 12) 100%
+    );
+
+  }
+  &::before {
+    @include responsiveMetalBorder(PC);
+    position: absolute;
+    content: "";
+    z-index: -1;
+    margin-left: math.div(-($align-center + $global-gap * 2), 2) +0.5;
+    margin-top: math.div(-($align-center + $global-gap * 2), 2) +0.5;
+    border-radius: $global-radius;
+    background: linear-gradient(45deg, #0f0f0fec 0%, transparent 20%),
+      linear-gradient(60deg, #858585 0%, transparent 20%),
+      linear-gradient(90deg, #272727 0%, transparent 20%),
+      linear-gradient(135deg, #070707e5 0%, transparent 20%),
+      linear-gradient(180deg, #474747 0%, transparent 20%),
+      linear-gradient(225deg, #fdfdfd 0%, transparent 20%),
+      linear-gradient(0deg, #1f1f1f 0%, transparent 20%),
+      linear-gradient(-30deg, #1f1f1fec 0%, transparent 20%),
+      linear-gradient(-45deg, #000000 0%, transparent 20%),
+      linear-gradient(-90deg, #cfcfcfde 0%, transparent 20%);
+  }
+}
+
+@media (max-width: 1280px) {
+  .App {
+    @include screen(TL);
+    &::before {
+      @include responsiveMetalBorder(TL);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    @include screen(SP);
+    &::before {
+      @include responsiveMetalBorder(SP);
+    }
+  }
+}

@@ -1,0 +1,80 @@
+@import "../../partials/variables";
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap");
+#display-area {
+  flex: 1;
+  display: grid;
+  grid-template-rows: minmax(65%, 100px) minmax(35%, 50px);
+  ::-webkit-scrollbar {
+    width: 3px !important;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px !important;
+    background-color: rgb(104, 104, 104) !important;
+    min-height: 10px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  ::-webkit-scrollbar-track-piece:end {
+    margin-bottom: 10px;
+  }
+
+  ::-webkit-scrollbar-track-piece:start {
+    margin-top: 12px;
+  }
+  div {
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    &:first-child {
+      text-align: right;
+      text-justify: inter-word;
+      letter-spacing: 0.2rem;
+      font-size: 2.5rem;
+      overflow-y: auto;
+      max-height: 200px;
+      scrollbar-width: 10px;
+      border-radius: ($global-radius)-2 ($global-radius)-2 0 0;
+    }
+    &:nth-child(2) {
+      text-align: right;
+      font-size: 3.5rem;
+      letter-spacing: 0.1rem;
+      border-radius: 0 0 2px 2px;
+      box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.329);
+      line-height: 2.5;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  #display-area {
+    div {
+      &:first-child {
+        font-size: 1.9rem;
+      }
+      &:nth-child(2) {
+        font-size: 3rem;
+        line-height: 2.4;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #display-area {
+    div {
+      &:first-child {
+        font-size: 1.6rem;
+      }
+      &:nth-child(2) {
+        font-size: 2.1rem;
+        line-height: 2.6;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+#clear-pad {
+  height: 0;
+  width: 100%;
+
+  [id="clear"] {
+    background-color: rgba(182, 182, 182, 0.993);
+    height: 80px;
+    $width: 6px;
+    width: $width;
+    float: right;
+    margin-right: -($width + 6);
+    margin-top: $width;
+    border: none;
+    transition: 0.4s;
+    border-radius: 0 50px 50px 0;
+    z-index:-1;
+
+    &:hover {
+      background-color: rgba(224, 108, 14, 0.966);
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: translateX(-$width +1);
+      width: 0;
+      background-color: rgba(255, 255, 255, 0.251);
+    }
+  }
+  @media (max-width: 1280px) {
+    [id="clear"] {
+      height: 60px;
+      $width: 4px;
+      width: $width;
+      margin-right: -($width + 6);
+      margin-top: $width;
+    }
+  }
+
+  @media (max-width: 768px) {
+    [id="clear"] {
+      height: 50px;
+      $width: 4px;
+      width: $width;
+      margin-right: -($width + 6);
+      margin-top: $width;
+    }
+  }
+}

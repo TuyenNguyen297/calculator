@@ -1,0 +1,149 @@
+@use "sass:math";
+@import "../../partials/variables";
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap");
+
+#pads-area {
+  display: grid;
+  min-height: 500px;
+  justify-content: center;
+  grid-template-columns: repeat(4, 23.8%);
+  grid-template-rows: repeat(4, 23.8%);
+  grid-template-areas:
+    "seven eight nine divide"
+    "four five six multiply"
+    "one two three subtract"
+    "zero decimal equal add";
+  grid-gap: $global-gap + 4;
+
+  button {
+    border: none;
+    border-radius: 2px;
+    background-color: transparent;
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: 300;
+    color: white;
+    font-size: 3rem;
+    box-shadow: 
+      0 -1.2px 2px 0.5px black,
+      inset -1px 0 2px 0 rgba(71, 65, 65, 0.705), 
+      0 1px 2px 0px black,
+      -1px 0 0 0 black;
+    transition: 0.3s, transform 0.1s, color 0.1s, background-color 0.1s;
+
+    &:hover {
+      background-color: white;
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+      font-size: 4rem;
+      font-weight: 600;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      background-color: rgb(170, 231, 71);
+      color: rgb(255, 255, 255);
+      font-size:3.5rem;
+    }
+  }
+
+  /*Function pads*/
+  [id="divide"] {
+    grid-area: divide;
+  }
+
+  [id="multiply"] {
+    grid-area: multiply;
+  }
+
+  [id="subtract"] {
+    grid-area: subtract;
+  }
+
+  [id="add"] {
+    grid-area: add;
+    border-bottom-right-radius: ($global-radius)-3;
+  }
+
+  [id="equal"] {
+    grid-area: equal;
+  }
+
+  [id="none"] {
+    grid-area: none;
+  }
+
+  /*Number pads*/
+  [id="zero"] {
+    grid-area: zero;
+    border-bottom-left-radius: ($global-radius)-3;
+  }
+
+  [id="one"] {
+    grid-area: one;
+  }
+
+  [id="two"] {
+    grid-area: two;
+  }
+
+  [id="three"] {
+    grid-area: three;
+  }
+
+  [id="four"] {
+    grid-area: four;
+  }
+
+  [id="five"] {
+    grid-area: five;
+  }
+
+  [id="six"] {
+    grid-area: six;
+  }
+
+  [id="seven"] {
+    grid-area: seven;
+  }
+
+  [id="eight"] {
+    grid-area: eight;
+  }
+
+  [id="nine"] {
+    grid-area: nine;
+  }
+
+  [id="decimal"] {
+    grid-area: decimal;
+    padding-bottom: 10px;
+
+    &:hover {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  #pads-area {
+    min-height: 400px;
+    grid-template-columns: repeat(4, 23.5%);
+    grid-template-rows: repeat(4, 23.7%);
+    gap: $global-gap + 4px;
+    button{
+      font-size:2.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #pads-area {
+    grid-template-columns: repeat(4, 23.5%);
+    grid-template-rows: repeat(4, 23.6%);
+    gap: ($global-gap + 3px) ($global-gap + 2px);
+    min-height: 300px;
+    button{
+      font-size:2rem;
+    }
+  }
+}
